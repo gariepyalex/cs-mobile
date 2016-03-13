@@ -51,6 +51,9 @@ public class MailboxAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.message_list_item, null);
         TextView text = (TextView) vi.findViewById(R.id.text);
         text.setText(data.get(position).text);
+
+        TextView from = (TextView) vi.findViewById(R.id.from);
+        from.setText(data.get(position).from);
         return vi;
     }
 }
