@@ -2,6 +2,8 @@ package com.mirego.rebelchat.controllers;
 
 import android.content.Context;
 
+import okhttp3.Response;
+
 public interface MessageController {
 
     interface SendMessageCallback {
@@ -9,6 +11,11 @@ public interface MessageController {
         void onSendMessageFail();
     }
 
+    interface GetMessagesCallback {
+        void onSendMessageSuccess(Response response);
+        void onSendMessageFail();
+    }
+
     void sendMessage(Context context, String userId, String text, String image, SendMessageCallback sendMessageCallback);
-    void getMessages(Context context, String userId, SendMessageCallback sendMessageCallback);
+    void getMessages(Context context, String userId, GetMessagesCallback getMessagesCallback);
 }
