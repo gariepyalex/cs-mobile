@@ -91,7 +91,11 @@ public class MessageControllerImpl implements MessageController {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (getMessagesCallback != null) {
-                    getMessagesCallback.onSendMessageSuccess(response);
+                    try {
+                        getMessagesCallback.onSendMessageSuccess(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 

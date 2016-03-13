@@ -9,15 +9,15 @@ import android.widget.TextView;
 
 import com.mirego.rebelchat.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MailboxAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<Message> data;
+    List<Message> data;
     private static LayoutInflater inflater = null;
 
-    public MailboxAdapter(Context context, ArrayList<Message> data) {
+    public MailboxAdapter(Context context, List<Message> data) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.data = data;
@@ -40,7 +40,7 @@ public class MailboxAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         // TODO Auto-generated method stub
-        return position;
+        return data.get(position).id;
     }
 
     @Override

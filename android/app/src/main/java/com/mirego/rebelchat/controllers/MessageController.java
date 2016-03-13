@@ -2,6 +2,8 @@ package com.mirego.rebelchat.controllers;
 
 import android.content.Context;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 
 import okhttp3.Response;
@@ -14,7 +16,7 @@ public interface MessageController {
     }
 
     interface GetMessagesCallback {
-        void onSendMessageSuccess(Response response) throws IOException;
+        void onSendMessageSuccess(Response response) throws IOException, JSONException;
         void onSendMessageFail();
     }
 
