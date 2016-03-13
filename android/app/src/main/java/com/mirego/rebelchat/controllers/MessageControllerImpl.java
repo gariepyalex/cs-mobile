@@ -72,7 +72,7 @@ public class MessageControllerImpl implements MessageController {
     }
 
     @Override
-        public void getMessages(final Context context, String userId, final SendMessageCallback sendMessageCallback) {
+        public void getMessages(final Context context, String userId, final GetMessagesCallback getMessagesCallback) {
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("http")
                 .host(context.getString(R.string.service_host))
@@ -90,15 +90,15 @@ public class MessageControllerImpl implements MessageController {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if (sendMessageCallback != null) {
-                    sendMessageCallback.onSendMessageSuccess();
+                if (getMessagesCallback != null) {
+                    getMessagesCallback.onSendMessageSuccess(response);
                 }
             }
 
             @Override
             public void onFailure(Call call, IOException e) {
-                if (sendMessageCallback != null) {
-                    sendMessageCallback.onSendMessageFail();
+                if (getMessagesCallback != null) {
+                    getMessagesCallback.onSendMessageFail();
                 }
             }
         });
