@@ -45,8 +45,8 @@
 
     <com.mirego.rebelchat.views.ToolButton
         android:id="@+id/btn_mailbox"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="top|center"
         android:padding="8dp"
         android:focusable="true"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="@dimen/message_button_side_margin"
         android:background="?selectableItemBackgroundBorderless"
         android:scaleType="fitCenter"
-        android:src="@drawable/icn_shuffle" />
+        android:src="@drawable/ic_mailbox" />
 
     <com.mirego.rebelchat.views.ToolButton
         android:id="@+id/btn_shuffle"

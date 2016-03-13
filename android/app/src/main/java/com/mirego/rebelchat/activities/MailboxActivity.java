@@ -54,7 +54,7 @@ public class MailboxActivity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         setContentView(R.layout.activity_mailbox);
-        messages.add(new Message(0, "LOADGIN", "..."));
+        messages.add(new Message(0, "...", "LOADING"));
         messagesListView = (ListView) findViewById(R.id.listView);
         messagesAdapter = new MailboxAdapter(this, messages);
         messagesListView.setAdapter(messagesAdapter);
