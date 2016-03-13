@@ -9,13 +9,15 @@ import android.widget.TextView;
 
 import com.mirego.rebelchat.R;
 
+import java.util.ArrayList;
+
 public class MailboxAdapter extends BaseAdapter {
 
     Context context;
-    String[] data;
+    ArrayList<Message> data;
     private static LayoutInflater inflater = null;
 
-    public MailboxAdapter(Context context, String[] data) {
+    public MailboxAdapter(Context context, ArrayList<Message> data) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.data = data;
@@ -26,13 +28,13 @@ public class MailboxAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return data.length;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return data[position];
+        return data.get(position);
     }
 
     @Override
@@ -48,7 +50,7 @@ public class MailboxAdapter extends BaseAdapter {
         if (vi == null)
             vi = inflater.inflate(R.layout.message_list_item, null);
         TextView text = (TextView) vi.findViewById(R.id.text);
-        text.setText(data[position]);
+        text.setText(data.get(position).text);
         return vi;
     }
 }
