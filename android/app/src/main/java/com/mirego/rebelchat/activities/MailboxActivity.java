@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.mirego.rebelchat.R;
+import com.mirego.rebelchat.controllers.MessageController;
 import com.mirego.rebelchat.models.MailboxAdapter;
 import com.mirego.rebelchat.controllers.MessageControllerImpl;
 
