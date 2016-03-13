@@ -163,6 +163,11 @@ public class MessageActivity extends BaseActivity {
         takeAndSendScreenshot();
     }
 
+    @OnClick(R.id.btn_mailbox)
+    void onMailboxPressed() {
+        startActivity(MailboxActivity.newIntent(this), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
+
     private void setRandomString() {
         String randomString = RandomString.generate(16);
         messageText.setText(randomString);

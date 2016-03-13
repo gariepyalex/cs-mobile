@@ -21,6 +21,7 @@
 
         <activity android:name=".activities.LoginActivity" android:theme="@style/RebelChat" />
         <activity android:name=".activities.MessageActivity" android:theme="@style/RebelChat.Message" />
+        <activity android:name=".activities.MailboxActivity" android:theme="@style/RebelChat.Message" />
 
     </application>
 

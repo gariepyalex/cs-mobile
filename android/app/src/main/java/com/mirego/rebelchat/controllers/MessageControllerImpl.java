@@ -21,6 +21,7 @@ import okhttp3.Response;
 public class MessageControllerImpl implements MessageController {
 
     private final String MESSAGES = "messages";
+    private final String USERS = "users";
 
     private final String PARAMETER_USER_ID = "userId";
     private final String DESTINATION_USER_NAME = "destinationUsername";
@@ -68,5 +69,24 @@ public class MessageControllerImpl implements MessageController {
                 }
             }
         });
+    }
+
+    @Override
+    public void getMessages(Context context, String userId) {
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("http")
+                .host(context.getString(R.string.service_host))
+                .port(context.getResources().getInteger(R.integer.service_port))
+                .addPathSegment(USERS)
+                .addPathSegment(userId)
+                .addPathSegment(MESSAGES)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
     }
 }
