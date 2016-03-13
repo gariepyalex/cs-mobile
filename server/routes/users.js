@@ -48,6 +48,29 @@ router.put('/:id', function(req, res) {
   });
 });
 
+router.get('/:id/messages', function(req, res) {
+    var db = req.db;
+    var userId = req.params.id;
+    var collection = db.messages;
+    var users = db.users;
+
+    users.findOne({
+        "_id": userId
+    }, {}, function(err, user) {
+        if (user == null) {
+            res.status(404);
+            res.send('User not found');
+        } else {
+
+            collection.find(
+                {'destinationUsername': user.name},
+                {}, function(err, messages) {
+                    res.json(messages);
+                });
+        }
+    });
+});
+
 /*
  * Create new user
  */
