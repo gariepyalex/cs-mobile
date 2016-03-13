@@ -23,6 +23,7 @@ public class MessageControllerImpl implements MessageController {
     private final String MESSAGES = "messages";
 
     private final String PARAMETER_USER_ID = "userId";
+    private final String DESTINATION_USER_NAME = "destinationUsername";
     private final String PARAMETER_TEXT = "text";
     private final String PARAMETER_IMAGE = "image";
 
@@ -40,6 +41,7 @@ public class MessageControllerImpl implements MessageController {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put(PARAMETER_USER_ID, userId);
+            jsonObject.put(DESTINATION_USER_NAME, "the-boss");
             jsonObject.put(PARAMETER_TEXT, text);
             jsonObject.put(PARAMETER_IMAGE, image);
         } catch (JSONException e) {
