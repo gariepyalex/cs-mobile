@@ -14,6 +14,8 @@ import com.mirego.rebelchat.controllers.MessageController;
 import com.mirego.rebelchat.models.MailboxAdapter;
 import com.mirego.rebelchat.controllers.MessageControllerImpl;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import okhttp3.Response;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -28,8 +30,9 @@ public class MailboxActivity extends BaseActivity {
 
     ListView messagesListView;
 
-    public static Intent newIntent(Activity fromActivity) {
+    public static Intent newIntent(Activity fromActivity, String userId) {
         Intent intent = new Intent(fromActivity, MailboxActivity.class);
+        intent.putExtra(EXTRA_USER_ID, userId);
         return intent;
     }
 
@@ -38,11 +41,10 @@ public class MailboxActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         messageController = new MessageControllerImpl();
         currentUserId = getIntent().getStringExtra(EXTRA_USER_ID);
+        Log.d("mailbox", currentUserId);
         fetchMessages();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mailbox);
         messagesListView = (ListView) findViewById(R.id.listView);
         messagesListView.setAdapter(new MailboxAdapter(this, new String[]{"data1",
@@ -56,11 +58,11 @@ public class MailboxActivity extends BaseActivity {
     }
 
     private void fetchMessages() {
-        messageController.getMessages(this.getApplicationContext(), EXTRA_USER_ID,
+        messageController.getMessages(this.getApplicationContext(), currentUserId,
                 new MessageController.GetMessagesCallback() {
                     @Override
-                    public void onSendMessageSuccess(Response response) {
-                        Log.d("messages", response.toString());
+                    public void onSendMessageSuccess(Response response) throws IOException {
+                        Log.d("mailbox", response.body().string());
                     }
 
                     @Override

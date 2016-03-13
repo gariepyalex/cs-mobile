@@ -13,6 +13,7 @@ import android.transition.AutoTransition;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -68,6 +69,7 @@ public class MessageActivity extends BaseActivity {
 
         messageController = new MessageControllerImpl();
         currentUserId = getIntent().getStringExtra(EXTRA_USER_ID);
+        Log.d("message", currentUserId);
 
         setRandomString();
 
@@ -165,7 +167,7 @@ public class MessageActivity extends BaseActivity {
 
     @OnClick(R.id.btn_mailbox)
     void onMailboxPressed() {
-        startActivity(MailboxActivity.newIntent(this), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        startActivity(MailboxActivity.newIntent(this, currentUserId), ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     private void setRandomString() {
